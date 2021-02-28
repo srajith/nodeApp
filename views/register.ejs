@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-6 m-auto">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="display-4 text-center text-primary">Register</legend>
+                    <%if(errors) { %>
+                    <% errors.forEach((err) => { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <%= err %>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% }) %>
+                    <% } %>
+                    <form action="/register" method="POST">
+                        <div class="form-group mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" required value="<%= typeof name != 'undefined' ? name : '' %>">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" required value="<%= typeof username != 'undefined' ? username : '' %>">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" value="<%= typeof password != 'undefined' ? password : '' %>" required>
+                        </div>
+                        <div class="form-group mt-3">
+                            <div class="d-grid gap-2">
+                                <input type="submit" class="btn btn-primary" value="Register">
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-muted mt-3"> Already have an account? <a href="/login" class="link-primary">Login</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
